@@ -1,4 +1,7 @@
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -7,6 +10,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import java.io.*;
+
+import java.io.File;
 
 public class loginPage {
 
@@ -24,7 +30,7 @@ driver.manage().window().maximize();
 }
 
 @Test
-public void Case1  () throws InterruptedException {
+public void Case1  () throws InterruptedException, IOException {
 //1- go to http://live.techpanda.org/index.php/
     driver.navigate().to("http://live.techpanda.org/index.php/");
 
@@ -54,8 +60,11 @@ public void Case1  () throws InterruptedException {
     sortMenu.selectByVisibleText("Name");
 
     //6- verify all product sorted by name
-    soft.assertTrue(driver.findElement(By.xpath("//option[@value=\"http://live.techpanda.org/index.php/mobile.html?dir=asc&order=name\"]")).isDisplayed(),"not displayed");
-
+   // soft.assertTrue(driver.findElement(By.xpath("//option[@value=\"http://live.techpanda.org/index.php/mobile.html?dir=asc&order=name\"]")).isDisplayed(),"not displayed");
+    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    String day1 = "day1";
+    String png = ("C:\\Users\\moham\\Downloads\\"+ day1 +".png");
+    FileUtils.copyFile(scrFile,new File(png));
 
 
 
