@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4246448d-8791-450b-983d-452acac7d6c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/loginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/loginPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2LkVQh60uSzA3xSJwLdDoMsdxzA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -36,7 +44,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/moham/IdeaProjects/automation_ecommerce_project/src/main/resources"
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/moham/IdeaProjects/automation_ecommerce_project/src/main/resources",
+    "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -44,7 +54,7 @@
       <recent name="C:\Users\moham\IdeaProjects\automation_ecommerce_project\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="TestNG.loginPage.Day2">
     <configuration name="loginPage.Case1" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="automation_ecommerce_project" />
       <option name="PACKAGE_NAME" value="" />
@@ -57,8 +67,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="loginPage.Day2" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation_ecommerce_project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="loginPage" />
+      <option name="METHOD_NAME" value="Day2" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.loginPage.Day2" />
         <item itemvalue="TestNG.loginPage.Case1" />
       </list>
     </recent_temporary>
