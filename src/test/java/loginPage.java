@@ -102,6 +102,37 @@ public void Day2 (){
 
 }
 
+@Test
+public void Day3 (){
+
+    //1- go to http://live.techpanda.org/index.php/
+    driver.navigate().to("http://live.techpanda.org/index.php/");
+
+    //2-click on mobile menu
+    driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
+
+    //3- click on add to cart
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[2]/div/div[3]/button")).click();
+
+    //4- change qty value to 1000
+    driver.findElement(By.xpath("//input[@type=\"text\"]")).clear();
+    driver.findElement(By.xpath("//input[@type=\"text\"]")).sendKeys("1000");
+    //4-1 click update button
+    driver.findElement(By.xpath("//button[@class=\"button btn-update\"]")).click();
+
+    //5- verify the error msd
+    String errorMsg=driver.findElement(By.className("error-msg")).getText();
+    String expectederrorMsg = "Some of the products cannot be ordered in requested quantity.";
+    Assert.assertTrue(errorMsg.contains(expectederrorMsg),"error msg does'nt apper");
+
+    // 6- click on empty card link
+    driver.findElement(By.id("empty_cart_button")).click();
+    // 7- verify card empty
+    String actualcardEmpty=  driver.findElement(By.className("page-title")).getText();
+    String expectedcardEmpty="SHOPPING CART IS EMPTY";
+    Assert.assertTrue(actualcardEmpty.contains(expectedcardEmpty),"error in verify card empty");
+}
+
 @AfterTest
 public  void closeBrowser () throws InterruptedException {
 Thread.sleep(3000);

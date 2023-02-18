@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4246448d-8791-450b-983d-452acac7d6c3" name="Changes" comment="">
+    <list default="true" id="4246448d-8791-450b-983d-452acac7d6c3" name="Changes" comment="day2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/loginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/loginPage.java" afterDir="false" />
     </list>
@@ -40,21 +40,21 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/moham/IdeaProjects/automation_ecommerce_project/src/main/resources",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/IdeaProjects/automation_ecommerce_project/src/main/resources&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\moham\IdeaProjects\automation_ecommerce_project\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.loginPage.Day2">
+  <component name="RunManager" selected="TestNG.loginPage.Day3 (2)">
     <configuration name="loginPage.Case1" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="automation_ecommerce_project" />
       <option name="PACKAGE_NAME" value="" />
@@ -79,8 +79,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="loginPage.Day3 (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation_ecommerce_project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="loginPage" />
+      <option name="METHOD_NAME" value="Day3" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="loginPage.Day3 (2)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation_ecommerce_project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="loginPage" />
+      <option name="METHOD_NAME" value="Day3" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="loginPage.Day3" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation_ecommerce_project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="loginPage" />
+      <option name="METHOD_NAME" value="Day3" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.loginPage.Day3 (2)" />
+        <item itemvalue="TestNG.loginPage.Day3" />
+        <item itemvalue="TestNG.loginPage.Day3 (1)" />
         <item itemvalue="TestNG.loginPage.Day2" />
         <item itemvalue="TestNG.loginPage.Case1" />
       </list>
@@ -95,6 +134,14 @@
       <option name="presentableId" value="Default" />
       <updated>1676415082642</updated>
     </task>
+    <task id="LOCAL-00001" summary="day2">
+      <created>1676476981707</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676476981707</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,5 +154,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="day2" />
+    <option name="LAST_COMMIT_MESSAGE" value="day2" />
   </component>
 </project>
