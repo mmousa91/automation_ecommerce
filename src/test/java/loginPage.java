@@ -1,10 +1,10 @@
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -13,6 +13,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 public class loginPage {
 
@@ -27,12 +28,13 @@ driver = new ChromeDriver();
 
 driver.manage().window().maximize();
 
+//1- go to http://live.techpanda.org/index.php/
+    driver.navigate().to("http://live.techpanda.org/index.php/");
+
 }
 
 @Test
 public void Case1  () throws InterruptedException, IOException {
-//1- go to http://live.techpanda.org/index.php/
-    driver.navigate().to("http://live.techpanda.org/index.php/");
 
 //2 - verify title of the page "this is demo site"
     String actualResult = driver.findElement(By.className("page-title")).getText();
@@ -76,8 +78,6 @@ public void Case1  () throws InterruptedException, IOException {
 
 @Test
 public void Day2 (){
-    //1- go to http://live.techpanda.org/index.php/
-    driver.navigate().to("http://live.techpanda.org/index.php/");
 
     //2-click on mobile menu
     driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
@@ -105,8 +105,6 @@ public void Day2 (){
 @Test
 public void Day3 (){
 
-    //1- go to http://live.techpanda.org/index.php/
-    driver.navigate().to("http://live.techpanda.org/index.php/");
 
     //2-click on mobile menu
     driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
@@ -129,8 +127,39 @@ public void Day3 (){
     driver.findElement(By.id("empty_cart_button")).click();
     // 7- verify card empty
     String actualcardEmpty=  driver.findElement(By.className("page-title")).getText();
+    System.out.println("you have no item msg " + actualcardEmpty);
     String expectedcardEmpty="SHOPPING CART IS EMPTY";
     Assert.assertTrue(actualcardEmpty.contains(expectedcardEmpty),"error in verify card empty");
+}
+
+@Test
+public void Day4 () {
+
+    //2-click on mobile menu
+    driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
+
+    //3- click on add to compare of iphone mobile
+     driver.findElement(By.xpath
+            ("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[1]/div/div[3]/ul/li[2]/a")).click();
+    // 3-1 click on add to compare of xperia mobile
+     driver.findElement(By.xpath
+             ("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[3]/div/div[3]/ul/li[2]/a")).click();
+
+     String
+     //4- click on compare button
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[3]/div[1]/div[2]/div/button")).click();
+
+    //
+      //driver.switchTo().newWindow(WindowType.WINDOW).findElement(By.className("page-title title-buttons")).getText();
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+  wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div[1]/h1"))));
+
+  String newWindow = driver.findElement(By.className("page-title title-buttons")).getText();
+  System.out.println(newWindow);
+
+
+
+
 }
 
 @AfterTest
