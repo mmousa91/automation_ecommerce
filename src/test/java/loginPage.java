@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Set;
 
 public class loginPage {
 
@@ -133,32 +134,65 @@ public void Day3 (){
 }
 
 @Test
-public void Day4 () {
+public void Day4 () throws InterruptedException {
 
     //2-click on mobile menu
     driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
 
     //3- click on add to compare of iphone mobile
      driver.findElement(By.xpath
-            ("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[1]/div/div[3]/ul/li[2]/a")).click();
+            ("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[3]/div/div[3]/ul/li[2]/a")).click();
+
+     String mainIphone = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[3]/div/h2/a")).getText();
+    System.out.println("the main mobile 1 is : " + mainIphone);
+
     // 3-1 click on add to compare of xperia mobile
      driver.findElement(By.xpath
-             ("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[3]/div/div[3]/ul/li[2]/a")).click();
+             ("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[2]/div/div[3]/ul/li[2]/a")).click();
 
-     String
+     String mainXperia = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[2]/div/h2/a")).getText();
+    System.out.println("the main mobile 2 is : "+ mainXperia);
      //4- click on compare button
     driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[3]/div[1]/div[2]/div/button")).click();
+        Thread.sleep(4000);
 
-    //
-      //driver.switchTo().newWindow(WindowType.WINDOW).findElement(By.className("page-title title-buttons")).getText();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-  wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div[1]/h1"))));
+    // 5-1 switch to the new popupwindow
+    for (String popupWindow : driver.getWindowHandles()){
 
-  String newWindow = driver.findElement(By.className("page-title title-buttons")).getText();
-  System.out.println(newWindow);
+        driver.switchTo().window(popupWindow);
+    }
+    // print the url of the new popup window
+      System.out.println(driver.getCurrentUrl());
 
+    // verify the popup window heading is "COMPARE PRODUCTS" with selected product in it
+    String expheadTitle = "COMPARE PRODUCTS";
+    String headTitle = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div[1]/h1")).getText();
+   //print heading title
+    System.out.println("compare head title is : "+headTitle);
+    Assert.assertEquals(expheadTitle,headTitle);
 
+   //text capture is iphone
+    String popupIphone = driver.findElement(By.xpath("//*[@id=\"product_comparison\"]/tbody[1]/tr[1]/td[2]/h2/a")).getText();
+    System.out.println("the popup 1 = " + popupIphone);
 
+    //text capture is iphone
+    String popupXperia = driver.findElement(By.xpath("//*[@id=\"product_comparison\"]/tbody[1]/tr[1]/td[1]/h2/a")).getText();
+    System.out.println("the popup 2 = " + popupXperia);
+
+    // to check the item1 iphone  in main page is equal the item in the popup page
+    try {
+        Assert.assertEquals(mainIphone,popupIphone);
+
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    // to check the second item xperia in main page is equal the item in the popup page
+    SoftAssert soft = new SoftAssert();
+    soft.assertEquals(mainXperia,popupXperia,"the two items does'nt match");
+
+    soft.assertAll();
+    // close popup window
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div[2]/button/span/span")).click();
 
 }
 
