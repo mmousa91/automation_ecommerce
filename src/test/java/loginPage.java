@@ -1,10 +1,10 @@
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -13,6 +13,8 @@ import org.testng.asserts.SoftAssert;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
+import java.util.Set;
 
 public class loginPage {
 
@@ -27,12 +29,13 @@ driver = new ChromeDriver();
 
 driver.manage().window().maximize();
 
+//1- go to http://live.techpanda.org/index.php/
+    driver.navigate().to("http://live.techpanda.org/index.php/");
+
 }
 
 @Test
 public void Case1  () throws InterruptedException, IOException {
-//1- go to http://live.techpanda.org/index.php/
-    driver.navigate().to("http://live.techpanda.org/index.php/");
 
 //2 - verify title of the page "this is demo site"
     String actualResult = driver.findElement(By.className("page-title")).getText();
@@ -76,8 +79,6 @@ public void Case1  () throws InterruptedException, IOException {
 
 @Test
 public void Day2 (){
-    //1- go to http://live.techpanda.org/index.php/
-    driver.navigate().to("http://live.techpanda.org/index.php/");
 
     //2-click on mobile menu
     driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
@@ -99,6 +100,99 @@ public void Day2 (){
     soft.assertAll();
 
 
+
+}
+
+@Test
+public void Day3 (){
+
+
+    //2-click on mobile menu
+    driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
+
+    //3- click on add to cart
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[2]/div/div[3]/button")).click();
+
+    //4- change qty value to 1000
+    driver.findElement(By.xpath("//input[@type=\"text\"]")).clear();
+    driver.findElement(By.xpath("//input[@type=\"text\"]")).sendKeys("1000");
+    //4-1 click update button
+    driver.findElement(By.xpath("//button[@class=\"button btn-update\"]")).click();
+
+    //5- verify the error msd
+    String errorMsg=driver.findElement(By.className("error-msg")).getText();
+    String expectederrorMsg = "Some of the products cannot be ordered in requested quantity.";
+    Assert.assertTrue(errorMsg.contains(expectederrorMsg),"error msg does'nt apper");
+
+    // 6- click on empty card link
+    driver.findElement(By.id("empty_cart_button")).click();
+    // 7- verify card empty
+    String actualcardEmpty=  driver.findElement(By.className("page-title")).getText();
+    System.out.println("you have no item msg " + actualcardEmpty);
+    String expectedcardEmpty="SHOPPING CART IS EMPTY";
+    Assert.assertTrue(actualcardEmpty.contains(expectedcardEmpty),"error in verify card empty");
+}
+
+@Test
+public void Day4 () throws InterruptedException {
+
+    //2-click on mobile menu
+    driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
+
+    //3- click on add to compare of iphone mobile
+     driver.findElement(By.xpath
+            ("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[3]/div/div[3]/ul/li[2]/a")).click();
+
+     String mainIphone = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[3]/div/h2/a")).getText();
+    System.out.println("the main mobile 1 is : " + mainIphone);
+
+    // 3-1 click on add to compare of xperia mobile
+     driver.findElement(By.xpath
+             ("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[2]/div/div[3]/ul/li[2]/a")).click();
+
+     String mainXperia = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[3]/ul/li[2]/div/h2/a")).getText();
+    System.out.println("the main mobile 2 is : "+ mainXperia);
+     //4- click on compare button
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[3]/div[1]/div[2]/div/button")).click();
+        Thread.sleep(4000);
+
+    // 5-1 switch to the new popupwindow
+    for (String popupWindow : driver.getWindowHandles()){
+
+        driver.switchTo().window(popupWindow);
+    }
+    // print the url of the new popup window
+      System.out.println(driver.getCurrentUrl());
+
+    // verify the popup window heading is "COMPARE PRODUCTS" with selected product in it
+    String expheadTitle = "COMPARE PRODUCTS";
+    String headTitle = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div[1]/h1")).getText();
+   //print heading title
+    System.out.println("compare head title is : "+headTitle);
+    Assert.assertEquals(expheadTitle,headTitle);
+
+   //text capture is iphone
+    String popupIphone = driver.findElement(By.xpath("//*[@id=\"product_comparison\"]/tbody[1]/tr[1]/td[2]/h2/a")).getText();
+    System.out.println("the popup 1 = " + popupIphone);
+
+    //text capture is iphone
+    String popupXperia = driver.findElement(By.xpath("//*[@id=\"product_comparison\"]/tbody[1]/tr[1]/td[1]/h2/a")).getText();
+    System.out.println("the popup 2 = " + popupXperia);
+
+    // to check the item1 iphone  in main page is equal the item in the popup page
+    try {
+        Assert.assertEquals(mainIphone,popupIphone);
+
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    // to check the second item xperia in main page is equal the item in the popup page
+    SoftAssert soft = new SoftAssert();
+    soft.assertEquals(mainXperia,popupXperia,"the two items does'nt match");
+
+    soft.assertAll();
+    // close popup window
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div[2]/button/span/span")).click();
 
 }
 
