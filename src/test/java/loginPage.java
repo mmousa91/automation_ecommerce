@@ -10,9 +10,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import java.io.*;
 
 import java.io.File;
+import java.io.IOException;
 
 public class loginPage {
 
@@ -60,10 +60,10 @@ public void Case1  () throws InterruptedException, IOException {
     sortMenu.selectByVisibleText("Name");
 
     //6- verify all product sorted by name
-   // soft.assertTrue(driver.findElement(By.xpath("//option[@value=\"http://live.techpanda.org/index.php/mobile.html?dir=asc&order=name\"]")).isDisplayed(),"not displayed");
+    soft.assertTrue(driver.findElement(By.xpath("//option[@value=\"http://live.techpanda.org/index.php/mobile.html?dir=asc&order=name\"]")).isDisplayed(),"not displayed");
     File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
     String day1 = "day1";
-    String png = ("C:\\Users\\moham\\Downloads\\"+ day1 +".png");
+    String png = ( "C:\\Users\\MMousa\\Downloads" +day1+".png");
     FileUtils.copyFile(scrFile,new File(png));
 
 
@@ -72,6 +72,34 @@ public void Case1  () throws InterruptedException, IOException {
 
 
     soft.assertAll();
+}
+
+@Test
+public void Day2 (){
+    //1- go to http://live.techpanda.org/index.php/
+    driver.navigate().to("http://live.techpanda.org/index.php/");
+
+    //2-click on mobile menu
+    driver.findElement(By.xpath("//a[@class=\"level0 \"]")).click();
+
+    // 3- read the cost of sony mobile and note this value
+    String value1=driver.findElement(By.id("product-price-1")).getText();
+    System.out.println(value1);
+
+    // 4 - click on sony xperia mobile
+    driver.findElement(By.linkText("SONY XPERIA")).click();
+
+    // 5- read the sony xperia mobile from details
+    String value2 = driver.findElement(By.cssSelector("span[class=\"price\"]")).getText();
+    System.out.println(value2);
+
+    // 6 - compare value 3 with value 5
+    SoftAssert soft = new SoftAssert();
+    soft.assertEquals(value1,value2,"the cost doesn't match");
+    soft.assertAll();
+
+
+
 }
 
 @AfterTest
