@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4246448d-8791-450b-983d-452acac7d6c3" name="Changes" comment="day4">
+    <list default="true" id="debc3d26-1728-4eba-97cf-dd93cd2ebebe" name="Changes" comment="day4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/loginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/loginPage.java" afterDir="false" />
     </list>
@@ -54,37 +54,11 @@
       <recent name="C:\Users\moham\IdeaProjects\automation_ecommerce_project\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.loginPage.Day4">
-    <configuration name="loginPage.Day3 (2)" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.loginPage.Day6">
+    <configuration name="C:/Users/moham/IdeaProjects/automation_ecommerce_project/smoke.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="automation_ecommerce_project" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="loginPage" />
-      <option name="METHOD_NAME" value="Day3" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="loginPage.Day3" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="automation_ecommerce_project" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="loginPage" />
-      <option name="METHOD_NAME" value="Day3" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="loginPage.Day4 (1)" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="automation_ecommerce_project" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="loginPage" />
-      <option name="METHOD_NAME" value="Day4" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/smoke.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
       <properties />
       <listeners />
       <method v="2">
@@ -115,13 +89,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="loginPage.Day5" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation_ecommerce_project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="loginPage" />
+      <option name="METHOD_NAME" value="Day5" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="loginPage.Day6" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation_ecommerce_project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="loginPage" />
+      <option name="METHOD_NAME" value="Day6" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.loginPage.Day6" />
+        <item itemvalue="TestNG.C:/Users/moham/IdeaProjects/automation_ecommerce_project/smoke.xml" />
+        <item itemvalue="TestNG.loginPage.Day5" />
         <item itemvalue="TestNG.loginPage.Day4" />
         <item itemvalue="TestNG.loginPage.Day4 (2)" />
-        <item itemvalue="TestNG.loginPage.Day4 (1)" />
-        <item itemvalue="TestNG.loginPage.Day3 (2)" />
-        <item itemvalue="TestNG.loginPage.Day3" />
       </list>
     </recent_temporary>
   </component>

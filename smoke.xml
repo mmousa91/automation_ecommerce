@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+
+    <test name="Regression1">
+        <classes>
+            <class name="loginPage">
+                <methods>
+                    <include name="Day5" />
+                    <include name="Day6"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

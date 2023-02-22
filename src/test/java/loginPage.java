@@ -196,6 +196,120 @@ public void Day4 () throws InterruptedException {
 
 }
 
+@Test
+public void Day5 (){
+    //2- click on my account link
+   driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
+    //switch to new window
+    for (String handle : driver.getWindowHandles() ){
+        driver.switchTo().window(handle);
+    }
+
+    //3- click on create account
+    driver.findElement(By.xpath("//*[@id=\"login-form\"]/div/div[1]/div[2]/a")).click();
+
+    //switch to new window
+    for (String handle : driver.getWindowHandles()){
+        driver.switchTo().window(handle);
+    }
+
+    //fill new user information
+    driver.findElement(By.id("firstname")).clear();
+    driver.findElement(By.id("firstname")).sendKeys("mohamed95");
+    driver.findElement(By.id("middlename")).clear();
+    driver.findElement(By.id("middlename")).sendKeys("mostafa");
+    driver.findElement(By.id("lastname")).clear();
+    driver.findElement(By.id("lastname")).sendKeys("hafez");
+    driver.findElement(By.id("email_address")).clear();
+    driver.findElement(By.id("email_address")).sendKeys("h1995@gmail.com");
+    driver.findElement(By.id("password")).clear();
+    driver.findElement(By.id("password")).sendKeys("123456");
+    driver.findElement(By.id("confirmation")).clear();
+    driver.findElement(By.id("confirmation")).sendKeys("123456");
+
+    //4- click register
+    driver.findElement(By.xpath("//*[@id=\"form-validate\"]/div[2]/button")).click();
+
+    // switch to new window
+    for (String handle : driver.getWindowHandles()){
+        driver.switchTo().window(handle);
+    }
+
+    //5- verify registration done
+    String expectedverifyMsg = "Thank you for registering with Main Website Store.";
+    String actualverifyMsg = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div/div/ul/li")).getText();
+
+    try {
+        Assert.assertTrue(actualverifyMsg.contains(expectedverifyMsg));
+
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
+    //6- go to tv menu
+    driver.findElement(By.xpath("//*[@id=\"nav\"]/ol/li[2]/a")).click();
+
+    //7- click on add to wish list -add lg lcd tv
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div[1]/div[2]/ul/li[1]/div/div[3]/ul/li[1]/a")).click();
+
+    //8- click on share wishlist
+    driver.findElement(By.xpath("//*[@id=\"wishlist-view-form\"]/div/div/button[1]")).click();
+
+    //9- enter email and message
+    driver.findElement(By.id("email_address")).sendKeys("hala@gmail.com");
+
+    driver.findElement(By.id("message")).sendKeys("hello");
+
+    //
+    driver.findElement(By.xpath("//*[@id=\"form-validate\"]/div[2]/button")).click();
+
+    //
+   String actualwishMsg= driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div/div[1]/ul/li")).getText();
+    String expectwishMsg = "Your Wishlist has been shared.";
+
+    try {
+        Assert.assertEquals(actualwishMsg , expectwishMsg);
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
+}
+
+@Test
+public void Day6 (){
+    //2- click on my account link
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
+
+    // 3- login using created credential
+    driver.findElement(By.id("email")).sendKeys("h1995@gmail.com");
+    driver.findElement(By.id("pass")).sendKeys("123456");
+
+    driver.findElement(By.id("send2")).click();
+
+    //4- click on my wish list
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[1]/div/div[2]/ul/li[8]/a")).click();
+
+    //5- click on add to cart link
+    driver.findElement(By.xpath("//*[@id=\"item_62009\"]/td[5]/div/button")).click();
+
+    //
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div/div[1]/ul/li/button")).click();
+
+    //
+    driver.findElement(By.id("billing:street1")).sendKeys("ABC");
+    driver.findElement(By.id("billing:city")).sendKeys("New York");
+
+    Select state = new Select(driver.findElement(By.id("billing:region_id")));
+    state.selectByVisibleText("New York");
+
+    driver.findElement(By.id("billing:postcode")).sendKeys("542896");
+    driver.findElement(By.id("billing:telephone")).sendKeys("12345678");
+
+    //
+    driver.findElement(By.xpath("//*[@id=\"billing-buttons-container\"]/button")).click();
+
+}
+
 @AfterTest
 public  void closeBrowser () throws InterruptedException {
 Thread.sleep(3000);
