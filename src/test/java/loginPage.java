@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -276,7 +277,7 @@ public void Day5 (){
 }
 
 @Test
-public void Day6 (){
+public void Day6 () throws InterruptedException {
     //2- click on my account link
     driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
 
@@ -290,23 +291,81 @@ public void Day6 (){
     driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[1]/div/div[2]/ul/li[8]/a")).click();
 
     //5- click on add to cart link
-    driver.findElement(By.xpath("//*[@id=\"item_62009\"]/td[5]/div/button")).click();
+    driver.findElement(By.xpath("//*[@class=\"first last odd\"]/td[5]/div/button")).click();
 
-    //
+    //6- click on proceed to checkout
     driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div/div[1]/ul/li/button")).click();
 
-    //
+    //7- enter shipping info
+    driver.findElement(By.id("billing:street1")).clear();
     driver.findElement(By.id("billing:street1")).sendKeys("ABC");
+    driver.findElement(By.id("billing:city")).clear();
     driver.findElement(By.id("billing:city")).sendKeys("New York");
 
     Select state = new Select(driver.findElement(By.id("billing:region_id")));
     state.selectByVisibleText("New York");
 
+    driver.findElement(By.id("billing:postcode")).clear();
     driver.findElement(By.id("billing:postcode")).sendKeys("542896");
+    driver.findElement(By.id("billing:telephone")).clear();
     driver.findElement(By.id("billing:telephone")).sendKeys("12345678");
 
-    //
+    //8- click estimate
     driver.findElement(By.xpath("//*[@id=\"billing-buttons-container\"]/button")).click();
+    Thread.sleep(4000);
+
+    //9- scroll up to shipping method
+    JavascriptExecutor js = (JavascriptExecutor) driver ;
+    WebElement flateRate = driver.findElement(By.xpath("//*[@id=\"opc-shipping_method\"]/div[1]/h2"));
+    js.executeScript("arguments[0].scrollIntoView();",flateRate);
+
+    //9-1 verify shipping cost generate
+    String actualflatRate = driver.findElement(By.xpath("//*[@id=\"checkout-shipping-method-load\"]/dl/dd/ul/li/label/span")).getText();
+    String expectedflateRate = "$5.00";
+    try {
+        Assert.assertEquals(actualflatRate,expectedflateRate);
+    }
+    catch (Exception e){
+        e.printStackTrace();
+    }
+
+    //9-2 click on continue
+    driver.findElement(By.xpath("//*[@id=\"shipping-method-buttons-container\"]/button")).click();
+     Thread.sleep(4000);
+
+    // select payment information
+
+  //  WebElement radio2 = driver.findElement(By.id("p_method_checkmo"));
+  //  radio2.click();
+
+
+    WebElement radiobutton = driver.findElement(By.id("p_method_checkmo"));
+    boolean isenabled = radiobutton.isEnabled();
+    boolean isselected = radiobutton.isSelected();
+    if (isenabled == true){
+       if (isselected == false){
+            radiobutton.click();
+       }
+   }else System.out.println("the radiobutton is disabled");
+
+    // click continue
+    driver.findElement(By.xpath("//*[@id=\"payment-buttons-container\"]/button")).click();
+
+    // click place order
+    driver.findElement(By.xpath("//*[@id=\"review-buttons-container\"]/button")).click();
+
+    //
+    String actualverifyorderMsd = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div[1]/h1")).getText();
+    String expectedverifyorderMsg = "Your order has been received.";
+
+    try {
+        Assert.assertEquals(actualverifyorderMsd , expectedverifyorderMsg);
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
+    String orderNo = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/p[1]/a")).getText();
+    System.out.println("the order no is : "+ orderNo);
 
 }
 
