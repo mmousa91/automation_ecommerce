@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4246448d-8791-450b-983d-452acac7d6c3" name="Changes" comment="day4 finished">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_16_2023_12_18_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_16_2023_12_18_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="4246448d-8791-450b-983d-452acac7d6c3" name="Changes" comment="day6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/loginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/loginPage.java" afterDir="false" />
     </list>
@@ -56,18 +55,6 @@
     </key>
   </component>
   <component name="RunManager" selected="TestNG.loginPage.Day6">
-    <configuration name="loginPage.Day4 (2)" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="automation_ecommerce_project" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="loginPage" />
-      <option name="METHOD_NAME" value="Day4" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="loginPage.Day4" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="automation_ecommerce_project" />
       <option name="PACKAGE_NAME" value="" />
@@ -104,6 +91,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="loginPage.Day6 (3)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation_ecommerce_project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="loginPage" />
+      <option name="METHOD_NAME" value="Day6" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="loginPage.Day6" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="automation_ecommerce_project" />
       <option name="PACKAGE_NAME" value="" />
@@ -119,10 +118,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.loginPage.Day6" />
+        <item itemvalue="TestNG.loginPage.Day6 (3)" />
         <item itemvalue="TestNG.loginPage.Day6 (2)" />
         <item itemvalue="TestNG.loginPage.Day6 (1)" />
         <item itemvalue="TestNG.loginPage.Day4" />
-        <item itemvalue="TestNG.loginPage.Day4 (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676829447391</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="day6">
+      <created>1677085887440</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677085887440</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +180,7 @@
     <MESSAGE value="day2" />
     <MESSAGE value="day3" />
     <MESSAGE value="day4" />
-    <option name="LAST_COMMIT_MESSAGE" value="day4" />
+    <MESSAGE value="day6" />
+    <option name="LAST_COMMIT_MESSAGE" value="day6" />
   </component>
 </project>

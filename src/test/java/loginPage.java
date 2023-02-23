@@ -282,7 +282,7 @@ public void Day6 () throws InterruptedException {
     driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
 
     // 3- login using created credential
-    driver.findElement(By.id("email")).sendKeys("h1995@gmail.com");
+    driver.findElement(By.id("email")).sendKeys("h1997@gmail.com");
     driver.findElement(By.id("pass")).sendKeys("123456");
 
     driver.findElement(By.id("send2")).click();
@@ -309,6 +309,7 @@ public void Day6 () throws InterruptedException {
     driver.findElement(By.id("billing:postcode")).sendKeys("542896");
     driver.findElement(By.id("billing:telephone")).clear();
     driver.findElement(By.id("billing:telephone")).sendKeys("12345678");
+
 
     //8- click estimate
     driver.findElement(By.xpath("//*[@id=\"billing-buttons-container\"]/button")).click();
@@ -350,22 +351,34 @@ public void Day6 () throws InterruptedException {
 
     // click continue
     driver.findElement(By.xpath("//*[@id=\"payment-buttons-container\"]/button")).click();
+    Thread.sleep(3000);
 
     // click place order
     driver.findElement(By.xpath("//*[@id=\"review-buttons-container\"]/button")).click();
 
-    //
+
+    // switch to new window
+    for (String handle : driver.getWindowHandles()){
+        driver.switchTo().window(handle);
+    }
+Thread.sleep(2000);
+    //17- verify order is generated
     String actualverifyorderMsd = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div[1]/h1")).getText();
-    String expectedverifyorderMsg = "Your order has been received.";
+    String expectedverifyorderMsg = "YOUR ORDER HAS BEEN RECEIVED.";
 
     try {
         Assert.assertEquals(actualverifyorderMsd , expectedverifyorderMsg);
     }catch (Exception e){
         e.printStackTrace();
     }
-
+    // note the order number
     String orderNo = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/p[1]/a")).getText();
     System.out.println("the order no is : "+ orderNo);
+
+}
+@Test
+public void Day7(){
+
 
 }
 
