@@ -18,7 +18,7 @@ import java.time.Duration;
 import java.util.Set;
 
 public class loginPage {
-
+    String orderNo ;
     WebDriver driver = null;
 @BeforeTest
 public void openBrowser () {
@@ -282,7 +282,7 @@ public void Day6 () throws InterruptedException {
     driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
 
     // 3- login using created credential
-    driver.findElement(By.id("email")).sendKeys("h1995@gmail.com");
+    driver.findElement(By.id("email")).sendKeys("h1990@gmail.com");
     driver.findElement(By.id("pass")).sendKeys("123456");
 
     driver.findElement(By.id("send2")).click();
@@ -349,13 +349,20 @@ public void Day6 () throws InterruptedException {
    }else System.out.println("the radiobutton is disabled");
 
     // click continue
-    driver.findElement(By.xpath("//*[@id=\"payment-buttons-container\"]/button")).click();
-
+    driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/ol/li[4]/div[2]/div[2]/button")).click();
+     Thread.sleep(3000);
     // click place order
-    driver.findElement(By.xpath("//*[@id=\"review-buttons-container\"]/button")).click();
+    driver.findElement(By.xpath("//button[@class=\"button btn-checkout\"]")).click();
+
+    Thread.sleep(4000);
 
     //
-    String actualverifyorderMsd = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div[1]/h1")).getText();
+    // switch to new window
+    for (String handle : driver.getWindowHandles()){
+        driver.switchTo().window(handle);
+    }
+    //
+    String actualverifyorderMsd = driver.findElement(By.xpath("//div[@class=\"page\"]/div[2]/div/div/div[1]")).getText();
     String expectedverifyorderMsg = "Your order has been received.";
 
     try {
@@ -364,11 +371,86 @@ public void Day6 () throws InterruptedException {
         e.printStackTrace();
     }
 
-    String orderNo = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/p[1]/a")).getText();
+
+
+     orderNo = driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/p[1]/a")).getText();
     System.out.println("the order no is : "+ orderNo);
 
 }
 
+@Test
+public void Day7 (){
+    //2- click on my account link
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
+
+    // 3- login using created credential
+    driver.findElement(By.id("email")).sendKeys("h1990@gmail.com");
+    driver.findElement(By.id("pass")).sendKeys("123456");
+
+    driver.findElement(By.id("send2")).click();
+
+    //click on my order
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[1]/div/div[2]/ul/li[4]/a")).click();
+
+    // click on view order
+    driver.findElement(By.xpath("//*[@id=\"my-orders-table\"]/tbody/tr/td[6]/span/a[1]")).click();
+
+    //
+   System.out.println(driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div/div[1]/h1")).getText());
+
+   System.out.println(orderNo);
+
+   // click on print order link
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[2]/div/div[1]/a[2]")).click();
+
+}
+
+@Test
+public void Day8(){
+    //2- click on my account link
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[3]/div/div[4]/ul/li[1]/a")).click();
+
+    // 3- login using created credential
+    driver.findElement(By.id("email")).sendKeys("h1990@gmail.com");
+    driver.findElement(By.id("pass")).sendKeys("123456");
+
+    driver.findElement(By.id("send2")).click();
+
+    //click on my order
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div[1]/div/div[2]/ul/li[4]/a")).click();
+
+    // click on reorder
+    driver.findElement(By.xpath("//*[@id=\"my-orders-table\"]/tbody/tr/td[6]/span/a[2]")).click();
+
+    //
+    String totalbeforeUpdate =driver.findElement(By.xpath("//*[@id=\"shopping-cart-totals-table\"]/tfoot/tr/td[2]/strong/span")).getText();
+    System.out.println("the total before update is :" + totalbeforeUpdate);
+    //
+    driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/input")).clear();
+
+    driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/input")).sendKeys("10");
+    driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/button")).click();
+
+    String totalafterUpdate =driver.findElement(By.xpath("//*[@id=\"shopping-cart-totals-table\"]/tfoot/tr/td[2]/strong/span")).getText();
+    System.out.println("the total after update is :" + totalafterUpdate);
+
+    if (totalafterUpdate == totalbeforeUpdate){
+        System.out.println("the total grand doesn't change");
+    }
+    else
+    {
+        System.out.println("the total grand has been change ");
+    }
+
+    //click on proceed to checked
+    driver.findElement(By.xpath("//*[@id=\"top\"]/body/div/div/div[2]/div/div/div/div[3]/div/ul/li[1]/button/span/span")).click();
+
+}
+
+@Test
+public void Day9(){
+
+}
 @AfterTest
 public  void closeBrowser () throws InterruptedException {
 Thread.sleep(3000);
